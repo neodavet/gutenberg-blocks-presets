@@ -107,7 +107,7 @@ class GBP_ACF_Blocks {
             return array_merge($categories, array(
                 array(
                     'slug'  => 'gbp-custom-blocks',
-                    'title' => __('Custom ACF Blocks', GBP_TEXT_DOMAIN),
+                    'title' => __('Custom ACF Blocks', 'gutenberg-blocks-presets'),
                     'icon'  => 'block-default'
                 )
             ));
@@ -263,7 +263,7 @@ class GBP_ACF_Blocks {
             include $template_file;
         } else {
             echo '<div class="gbp-block-error">';
-            echo __('Block template not found: ', GBP_TEXT_DOMAIN) . esc_html($block_slug);
+            echo esc_html(__('Block template not found: ', 'gutenberg-blocks-presets')) . esc_html($block_slug);
             echo '</div>';
         }
     }
@@ -368,9 +368,9 @@ class GBP_ACF_Blocks {
         ?>
         <div class="notice notice-warning is-dismissible">
             <p>
-                <strong><?php _e('Gutenberg Blocks Presets:', GBP_TEXT_DOMAIN); ?></strong>
-                <?php _e('Advanced Custom Fields Pro is required for automatic ACF blocks registration. You can still use Block Presets without ACF.', GBP_TEXT_DOMAIN); ?>
-                <a href="<?php echo admin_url('edit.php?post_type=gbp_block_preset&page=gbp-settings'); ?>"><?php _e('Configure settings', GBP_TEXT_DOMAIN); ?></a>
+                <strong><?php esc_html_e('Gutenberg Blocks Presets:', 'gutenberg-blocks-presets'); ?></strong>
+                <?php esc_html_e('Advanced Custom Fields Pro is required for automatic ACF blocks registration. You can still use Block Presets without ACF.', 'gutenberg-blocks-presets'); ?>
+                <a href="<?php echo esc_url(admin_url('edit.php?post_type=gbp_block_preset&page=gbp-settings')); ?>"><?php esc_html_e('Configure settings', 'gutenberg-blocks-presets'); ?></a>
             </p>
         </div>
         <?php
@@ -388,9 +388,9 @@ class GBP_ACF_Blocks {
         ?>
         <div class="notice notice-info is-dismissible">
             <p>
-                <strong><?php _e('ACF Features Disabled:', GBP_TEXT_DOMAIN); ?></strong>
-                <?php _e('Automatic ACF blocks registration is currently disabled. The plugin works with native WordPress functionality.', GBP_TEXT_DOMAIN); ?>
-                <a href="<?php echo admin_url('edit.php?post_type=gbp_block_preset&page=gbp-settings'); ?>"><?php _e('Enable ACF features', GBP_TEXT_DOMAIN); ?></a>
+                <strong><?php esc_html_e('ACF Features Disabled:', 'gutenberg-blocks-presets'); ?></strong>
+                <?php esc_html_e('Automatic ACF blocks registration is currently disabled. The plugin works with native WordPress functionality.', 'gutenberg-blocks-presets'); ?>
+                <a href="<?php echo esc_url(admin_url('edit.php?post_type=gbp_block_preset&page=gbp-settings')); ?>"><?php esc_html_e('Enable ACF features', 'gutenberg-blocks-presets'); ?></a>
             </p>
         </div>
         <?php

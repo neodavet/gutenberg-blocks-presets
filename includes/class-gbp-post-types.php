@@ -71,20 +71,20 @@ class GBP_Post_Types {
         GBP_Helper_Functions::log('Post type already exists before registration: ' . ($already_exists ? 'YES' : 'NO'));
 
         $labels = array(
-            'name'                     => __('Block Presets', GBP_TEXT_DOMAIN),
-            'singular_name'            => __('Block Preset', GBP_TEXT_DOMAIN),
-            'menu_name'                => __('Block Presets', GBP_TEXT_DOMAIN),
-            'name_admin_bar'           => __('Block Preset', GBP_TEXT_DOMAIN),
-            'add_new'                  => __('Add New', GBP_TEXT_DOMAIN),
-            'add_new_item'             => __('Add New Block Preset', GBP_TEXT_DOMAIN),
-            'new_item'                 => __('New Block Preset', GBP_TEXT_DOMAIN),
-            'edit_item'                => __('Edit Block Preset', GBP_TEXT_DOMAIN),
-            'view_item'                => __('View Block Preset', GBP_TEXT_DOMAIN),
-            'view_items'               => __('View Block Presets', GBP_TEXT_DOMAIN),
-            'all_items'                => __('All Block Presets', GBP_TEXT_DOMAIN),
-            'search_items'             => __('Search Block Presets', GBP_TEXT_DOMAIN),
-            'not_found'                => __('No block presets found.', GBP_TEXT_DOMAIN),
-            'not_found_in_trash'       => __('No block presets found in Trash.', GBP_TEXT_DOMAIN),
+            'name'                     => __('Block Presets', 'gutenberg-blocks-presets'),
+            'singular_name'            => __('Block Preset', 'gutenberg-blocks-presets'),
+            'menu_name'                => __('Block Presets', 'gutenberg-blocks-presets'),
+            'name_admin_bar'           => __('Block Preset', 'gutenberg-blocks-presets'),
+            'add_new'                  => __('Add New', 'gutenberg-blocks-presets'),
+            'add_new_item'             => __('Add New Block Preset', 'gutenberg-blocks-presets'),
+            'new_item'                 => __('New Block Preset', 'gutenberg-blocks-presets'),
+            'edit_item'                => __('Edit Block Preset', 'gutenberg-blocks-presets'),
+            'view_item'                => __('View Block Preset', 'gutenberg-blocks-presets'),
+            'view_items'               => __('View Block Presets', 'gutenberg-blocks-presets'),
+            'all_items'                => __('All Block Presets', 'gutenberg-blocks-presets'),
+            'search_items'             => __('Search Block Presets', 'gutenberg-blocks-presets'),
+            'not_found'                => __('No block presets found.', 'gutenberg-blocks-presets'),
+            'not_found_in_trash'       => __('No block presets found in Trash.', 'gutenberg-blocks-presets'),
         );
 
         // Minimal args to test basic registration
@@ -139,26 +139,26 @@ class GBP_Post_Types {
     public function register_block_preset_taxonomies() {
         // Block Preset Categories
         $category_labels = array(
-            'name'                       => _x('Block Categories', 'Taxonomy General Name', GBP_TEXT_DOMAIN),
-            'singular_name'              => _x('Block Category', 'Taxonomy Singular Name', GBP_TEXT_DOMAIN),
-            'menu_name'                  => __('Categories', GBP_TEXT_DOMAIN),
-            'all_items'                  => __('All Categories', GBP_TEXT_DOMAIN),
-            'parent_item'                => __('Parent Category', GBP_TEXT_DOMAIN),
-            'parent_item_colon'          => __('Parent Category:', GBP_TEXT_DOMAIN),
-            'new_item_name'              => __('New Category Name', GBP_TEXT_DOMAIN),
-            'add_new_item'               => __('Add New Category', GBP_TEXT_DOMAIN),
-            'edit_item'                  => __('Edit Category', GBP_TEXT_DOMAIN),
-            'update_item'                => __('Update Category', GBP_TEXT_DOMAIN),
-            'view_item'                  => __('View Category', GBP_TEXT_DOMAIN),
-            'separate_items_with_commas' => __('Separate categories with commas', GBP_TEXT_DOMAIN),
-            'add_or_remove_items'        => __('Add or remove categories', GBP_TEXT_DOMAIN),
-            'choose_from_most_used'      => __('Choose from the most used', GBP_TEXT_DOMAIN),
-            'popular_items'              => __('Popular Categories', GBP_TEXT_DOMAIN),
-            'search_items'               => __('Search Categories', GBP_TEXT_DOMAIN),
-            'not_found'                  => __('Not Found', GBP_TEXT_DOMAIN),
-            'no_terms'                   => __('No categories', GBP_TEXT_DOMAIN),
-            'items_list'                 => __('Categories list', GBP_TEXT_DOMAIN),
-            'items_list_navigation'      => __('Categories list navigation', GBP_TEXT_DOMAIN),
+            'name'                       => _x('Block Categories', 'Taxonomy General Name', 'gutenberg-blocks-presets'),
+            'singular_name'              => _x('Block Category', 'Taxonomy Singular Name', 'gutenberg-blocks-presets'),
+            'menu_name'                  => __('Categories', 'gutenberg-blocks-presets'),
+            'all_items'                  => __('All Categories', 'gutenberg-blocks-presets'),
+            'parent_item'                => __('Parent Category', 'gutenberg-blocks-presets'),
+            'parent_item_colon'          => __('Parent Category:', 'gutenberg-blocks-presets'),
+            'new_item_name'              => __('New Category Name', 'gutenberg-blocks-presets'),
+            'add_new_item'               => __('Add New Category', 'gutenberg-blocks-presets'),
+            'edit_item'                  => __('Edit Category', 'gutenberg-blocks-presets'),
+            'update_item'                => __('Update Category', 'gutenberg-blocks-presets'),
+            'view_item'                  => __('View Category', 'gutenberg-blocks-presets'),
+            'separate_items_with_commas' => __('Separate categories with commas', 'gutenberg-blocks-presets'),
+            'add_or_remove_items'        => __('Add or remove categories', 'gutenberg-blocks-presets'),
+            'choose_from_most_used'      => __('Choose from the most used', 'gutenberg-blocks-presets'),
+            'popular_items'              => __('Popular Categories', 'gutenberg-blocks-presets'),
+            'search_items'               => __('Search Categories', 'gutenberg-blocks-presets'),
+            'not_found'                  => __('Not Found', 'gutenberg-blocks-presets'),
+            'no_terms'                   => __('No categories', 'gutenberg-blocks-presets'),
+            'items_list'                 => __('Categories list', 'gutenberg-blocks-presets'),
+            'items_list_navigation'      => __('Categories list navigation', 'gutenberg-blocks-presets'),
         );
 
         $category_args = array(
@@ -176,24 +176,24 @@ class GBP_Post_Types {
 
         // Block Preset Tags
         $tag_labels = array(
-            'name'                       => _x('Block Tags', 'Taxonomy General Name', GBP_TEXT_DOMAIN),
-            'singular_name'              => _x('Block Tag', 'Taxonomy Singular Name', GBP_TEXT_DOMAIN),
-            'menu_name'                  => __('Tags', GBP_TEXT_DOMAIN),
-            'all_items'                  => __('All Tags', GBP_TEXT_DOMAIN),
-            'new_item_name'              => __('New Tag Name', GBP_TEXT_DOMAIN),
-            'add_new_item'               => __('Add New Tag', GBP_TEXT_DOMAIN),
-            'edit_item'                  => __('Edit Tag', GBP_TEXT_DOMAIN),
-            'update_item'                => __('Update Tag', GBP_TEXT_DOMAIN),
-            'view_item'                  => __('View Tag', GBP_TEXT_DOMAIN),
-            'separate_items_with_commas' => __('Separate tags with commas', GBP_TEXT_DOMAIN),
-            'add_or_remove_items'        => __('Add or remove tags', GBP_TEXT_DOMAIN),
-            'choose_from_most_used'      => __('Choose from the most used', GBP_TEXT_DOMAIN),
-            'popular_items'              => __('Popular Tags', GBP_TEXT_DOMAIN),
-            'search_items'               => __('Search Tags', GBP_TEXT_DOMAIN),
-            'not_found'                  => __('Not Found', GBP_TEXT_DOMAIN),
-            'no_terms'                   => __('No tags', GBP_TEXT_DOMAIN),
-            'items_list'                 => __('Tags list', GBP_TEXT_DOMAIN),
-            'items_list_navigation'      => __('Tags list navigation', GBP_TEXT_DOMAIN),
+            'name'                       => _x('Block Tags', 'Taxonomy General Name', 'gutenberg-blocks-presets'),
+            'singular_name'              => _x('Block Tag', 'Taxonomy Singular Name', 'gutenberg-blocks-presets'),
+            'menu_name'                  => __('Tags', 'gutenberg-blocks-presets'),
+            'all_items'                  => __('All Tags', 'gutenberg-blocks-presets'),
+            'new_item_name'              => __('New Tag Name', 'gutenberg-blocks-presets'),
+            'add_new_item'               => __('Add New Tag', 'gutenberg-blocks-presets'),
+            'edit_item'                  => __('Edit Tag', 'gutenberg-blocks-presets'),
+            'update_item'                => __('Update Tag', 'gutenberg-blocks-presets'),
+            'view_item'                  => __('View Tag', 'gutenberg-blocks-presets'),
+            'separate_items_with_commas' => __('Separate tags with commas', 'gutenberg-blocks-presets'),
+            'add_or_remove_items'        => __('Add or remove tags', 'gutenberg-blocks-presets'),
+            'choose_from_most_used'      => __('Choose from the most used', 'gutenberg-blocks-presets'),
+            'popular_items'              => __('Popular Tags', 'gutenberg-blocks-presets'),
+            'search_items'               => __('Search Tags', 'gutenberg-blocks-presets'),
+            'not_found'                  => __('Not Found', 'gutenberg-blocks-presets'),
+            'no_terms'                   => __('No tags', 'gutenberg-blocks-presets'),
+            'items_list'                 => __('Tags list', 'gutenberg-blocks-presets'),
+            'items_list_navigation'      => __('Tags list navigation', 'gutenberg-blocks-presets'),
         );
 
         $tag_args = array(
@@ -216,23 +216,23 @@ class GBP_Post_Types {
      */
     public function register_legacy_block_post_type() {
         $labels = array(
-            'name' => __('Block Presets (Legacy)', GBP_TEXT_DOMAIN),
-            'singular_name' => __('Block Preset', GBP_TEXT_DOMAIN),
-            'menu_name' => __('Legacy Blocks', GBP_TEXT_DOMAIN),
-            'all_items' => __('All Legacy Blocks', GBP_TEXT_DOMAIN),
-            'edit_item' => __('Edit Block Preset', GBP_TEXT_DOMAIN),
-            'view_item' => __('View Block Preset', GBP_TEXT_DOMAIN),
-            'add_new_item' => __('Add New Block', GBP_TEXT_DOMAIN),
-            'add_new' => __('Add New', GBP_TEXT_DOMAIN),
-            'new_item' => __('New Block Preset', GBP_TEXT_DOMAIN),
-            'search_items' => __('Search Block Presets', GBP_TEXT_DOMAIN),
-            'not_found' => __('No block presets found.', GBP_TEXT_DOMAIN),
-            'not_found_in_trash' => __('No block presets found in Trash.', GBP_TEXT_DOMAIN),
+            'name' => __('Block Presets (Legacy)', 'gutenberg-blocks-presets'),
+            'singular_name' => __('Block Preset', 'gutenberg-blocks-presets'),
+            'menu_name' => __('Legacy Blocks', 'gutenberg-blocks-presets'),
+            'all_items' => __('All Legacy Blocks', 'gutenberg-blocks-presets'),
+            'edit_item' => __('Edit Block Preset', 'gutenberg-blocks-presets'),
+            'view_item' => __('View Block Preset', 'gutenberg-blocks-presets'),
+            'add_new_item' => __('Add New Block', 'gutenberg-blocks-presets'),
+            'add_new' => __('Add New', 'gutenberg-blocks-presets'),
+            'new_item' => __('New Block Preset', 'gutenberg-blocks-presets'),
+            'search_items' => __('Search Block Presets', 'gutenberg-blocks-presets'),
+            'not_found' => __('No block presets found.', 'gutenberg-blocks-presets'),
+            'not_found_in_trash' => __('No block presets found in Trash.', 'gutenberg-blocks-presets'),
         );
 
         $args = array(
             'labels' => $labels,
-            'description' => __('Legacy block presets (for backward compatibility only).', GBP_TEXT_DOMAIN),
+            'description' => __('Legacy block presets (for backward compatibility only).', 'gutenberg-blocks-presets'),
             'public' => false,
             'publicly_queryable' => false,
             'show_ui' => true,
@@ -268,7 +268,7 @@ class GBP_Post_Types {
             // Find and adjust the menu item
             foreach ($menu as $key => $item) {
                 if (isset($item[2]) && $item[2] === 'edit.php?post_type=gbp_block_preset') {
-                    $menu[$key][0] = __('Block Presets', GBP_TEXT_DOMAIN);
+                    $menu[$key][0] = __('Block Presets', 'gutenberg-blocks-presets');
                     break;
                 }
             }
@@ -277,9 +277,9 @@ class GBP_Post_Types {
             if (isset($submenu['edit.php?post_type=gbp_block_preset'])) {
                 foreach ($submenu['edit.php?post_type=gbp_block_preset'] as $key => $item) {
                     if ($item[2] === 'edit.php?post_type=gbp_block_preset') {
-                        $submenu['edit.php?post_type=gbp_block_preset'][$key][0] = __('All Block Presets', GBP_TEXT_DOMAIN);
+                        $submenu['edit.php?post_type=gbp_block_preset'][$key][0] = __('All Block Presets', 'gutenberg-blocks-presets');
                     } elseif ($item[2] === 'post-new.php?post_type=gbp_block_preset') {
-                        $submenu['edit.php?post_type=gbp_block_preset'][$key][0] = __('Add New Preset', GBP_TEXT_DOMAIN);
+                        $submenu['edit.php?post_type=gbp_block_preset'][$key][0] = __('Add New Preset', 'gutenberg-blocks-presets');
                     }
                 }
             }

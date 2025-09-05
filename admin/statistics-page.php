@@ -57,24 +57,24 @@ $recent_usage = $wpdb->get_results("
         <!-- Overview Cards -->
         <div class="gbp-stats-cards">
             <div class="gbp-stat-card">
-                <h3><?php _e('Total Block Presets', GBP_TEXT_DOMAIN); ?></h3>
-                <div class="gbp-stat-number"><?php echo $total_presets; ?></div>
+                <h3><?php esc_html_e('Total Block Presets', 'gutenberg-blocks-presets'); ?></h3>
+                <div class="gbp-stat-number"><?php echo esc_html($total_presets); ?></div>
             </div>
             
             <div class="gbp-stat-card">
-                <h3><?php _e('Total Usage Count', GBP_TEXT_DOMAIN); ?></h3>
-                <div class="gbp-stat-number"><?php echo $total_usage ?: 0; ?></div>
+                <h3><?php esc_html_e('Total Usage Count', 'gutenberg-blocks-presets'); ?></h3>
+                <div class="gbp-stat-number"><?php echo esc_html($total_usage ?: 0); ?></div>
             </div>
             
             <div class="gbp-stat-card">
-                <h3><?php _e('Unused Presets', GBP_TEXT_DOMAIN); ?></h3>
-                <div class="gbp-stat-number"><?php echo count($unused_presets); ?></div>
+                <h3><?php esc_html_e('Unused Presets', 'gutenberg-blocks-presets'); ?></h3>
+                <div class="gbp-stat-number"><?php echo esc_html(count($unused_presets)); ?></div>
             </div>
             
             <div class="gbp-stat-card">
-                <h3><?php _e('Average Usage', GBP_TEXT_DOMAIN); ?></h3>
+                <h3><?php esc_html_e('Average Usage', 'gutenberg-blocks-presets'); ?></h3>
                 <div class="gbp-stat-number">
-                    <?php echo $total_presets > 0 ? round(($total_usage ?: 0) / $total_presets, 1) : 0; ?>
+                    <?php echo esc_html($total_presets > 0 ? round(($total_usage ?: 0) / $total_presets, 1) : 0); ?>
                 </div>
             </div>
         </div>
@@ -83,15 +83,15 @@ $recent_usage = $wpdb->get_results("
             
             <!-- Most Used Presets -->
             <div class="gbp-stats-section">
-                <h2><?php _e('Most Used Block Presets', GBP_TEXT_DOMAIN); ?></h2>
+                <h2><?php esc_html_e('Most Used Block Presets', 'gutenberg-blocks-presets'); ?></h2>
                 
                 <?php if (!empty($most_used)): ?>
                     <table class="wp-list-table widefat fixed striped">
                         <thead>
                             <tr>
-                                <th><?php _e('Block Preset', GBP_TEXT_DOMAIN); ?></th>
-                                <th><?php _e('Usage Count', GBP_TEXT_DOMAIN); ?></th>
-                                <th><?php _e('Actions', GBP_TEXT_DOMAIN); ?></th>
+                                <th><?php esc_html_e('Block Preset', 'gutenberg-blocks-presets'); ?></th>
+                                <th><?php esc_html_e('Usage Count', 'gutenberg-blocks-presets'); ?></th>
+                                <th><?php esc_html_e('Actions', 'gutenberg-blocks-presets'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,15 +99,15 @@ $recent_usage = $wpdb->get_results("
                             <tr>
                                 <td>
                                     <strong>
-                                        <a href="<?php echo get_edit_post_link($preset->ID); ?>">
+                                        <a href="<?php echo esc_url(get_edit_post_link($preset->ID)); ?>">
                                             <?php echo esc_html($preset->post_title); ?>
                                         </a>
                                     </strong>
                                 </td>
-                                <td><?php echo $preset->total_usage ?: 0; ?></td>
+                                <td><?php echo esc_html($preset->total_usage ?: 0); ?></td>
                                 <td>
-                                    <a href="<?php echo get_edit_post_link($preset->ID); ?>" class="button button-small">
-                                        <?php _e('Edit', GBP_TEXT_DOMAIN); ?>
+                                    <a href="<?php echo esc_url(get_edit_post_link($preset->ID)); ?>" class="button button-small">
+                                        <?php esc_html_e('Edit', 'gutenberg-blocks-presets'); ?>
                                     </a>
                                 </td>
                             </tr>
@@ -115,22 +115,22 @@ $recent_usage = $wpdb->get_results("
                         </tbody>
                     </table>
                 <?php else: ?>
-                    <p><?php _e('No usage data available yet.', GBP_TEXT_DOMAIN); ?></p>
+                    <p><?php esc_html_e('No usage data available yet.', 'gutenberg-blocks-presets'); ?></p>
                 <?php endif; ?>
             </div>
             
             <!-- Recent Activity -->
             <div class="gbp-stats-section">
-                <h2><?php _e('Recent Usage Activity', GBP_TEXT_DOMAIN); ?></h2>
+                <h2><?php esc_html_e('Recent Usage Activity', 'gutenberg-blocks-presets'); ?></h2>
                 
                 <?php if (!empty($recent_usage)): ?>
                     <table class="wp-list-table widefat fixed striped">
                         <thead>
                             <tr>
-                                <th><?php _e('Block Preset', GBP_TEXT_DOMAIN); ?></th>
-                                <th><?php _e('Used On', GBP_TEXT_DOMAIN); ?></th>
-                                <th><?php _e('Last Used', GBP_TEXT_DOMAIN); ?></th>
-                                <th><?php _e('Count', GBP_TEXT_DOMAIN); ?></th>
+                                <th><?php esc_html_e('Block Preset', 'gutenberg-blocks-presets'); ?></th>
+                                <th><?php esc_html_e('Used On', 'gutenberg-blocks-presets'); ?></th>
+                                <th><?php esc_html_e('Last Used', 'gutenberg-blocks-presets'); ?></th>
+                                <th><?php esc_html_e('Count', 'gutenberg-blocks-presets'); ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,14 +138,14 @@ $recent_usage = $wpdb->get_results("
                             <tr>
                                 <td><?php echo esc_html($usage->block_title); ?></td>
                                 <td><?php echo esc_html($usage->used_on); ?></td>
-                                <td><?php echo human_time_diff(strtotime($usage->last_used), current_time('timestamp')) . ' ' . __('ago', GBP_TEXT_DOMAIN); ?></td>
-                                <td><?php echo $usage->usage_count; ?></td>
+                                <td><?php echo esc_html(human_time_diff(strtotime($usage->last_used), current_time('timestamp')) . ' ' . __('ago', 'gutenberg-blocks-presets')); ?></td>
+                                <td><?php echo esc_html($usage->usage_count); ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php else: ?>
-                    <p><?php _e('No recent usage activity.', GBP_TEXT_DOMAIN); ?></p>
+                    <p><?php esc_html_e('No recent usage activity.', 'gutenberg-blocks-presets'); ?></p>
                 <?php endif; ?>
             </div>
             
@@ -154,14 +154,14 @@ $recent_usage = $wpdb->get_results("
         <!-- Unused Presets -->
         <?php if (!empty($unused_presets)): ?>
         <div class="gbp-stats-section gbp-full-width">
-            <h2><?php _e('Unused Block Presets', GBP_TEXT_DOMAIN); ?></h2>
-            <p><?php _e('These block presets have never been used. Consider reviewing them for relevance.', GBP_TEXT_DOMAIN); ?></p>
+            <h2><?php esc_html_e('Unused Block Presets', 'gutenberg-blocks-presets'); ?></h2>
+            <p><?php esc_html_e('These block presets have never been used. Consider reviewing them for relevance.', 'gutenberg-blocks-presets'); ?></p>
             
             <table class="wp-list-table widefat fixed striped">
                 <thead>
                     <tr>
-                        <th><?php _e('Block Preset', GBP_TEXT_DOMAIN); ?></th>
-                        <th><?php _e('Actions', GBP_TEXT_DOMAIN); ?></th>
+                        <th><?php esc_html_e('Block Preset', 'gutenberg-blocks-presets'); ?></th>
+                        <th><?php esc_html_e('Actions', 'gutenberg-blocks-presets'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -169,17 +169,17 @@ $recent_usage = $wpdb->get_results("
                     <tr>
                         <td>
                             <strong>
-                                <a href="<?php echo get_edit_post_link($preset->ID); ?>">
+                                <a href="<?php echo esc_url(get_edit_post_link($preset->ID)); ?>">
                                     <?php echo esc_html($preset->post_title); ?>
                                 </a>
                             </strong>
                         </td>
                         <td>
-                            <a href="<?php echo get_edit_post_link($preset->ID); ?>" class="button button-small">
-                                <?php _e('Edit', GBP_TEXT_DOMAIN); ?>
+                            <a href="<?php echo esc_url(get_edit_post_link($preset->ID)); ?>" class="button button-small">
+                                <?php esc_html_e('Edit', 'gutenberg-blocks-presets'); ?>
                             </a>
-                            <a href="<?php echo get_permalink($preset->ID); ?>" class="button button-small" target="_blank">
-                                <?php _e('Preview', GBP_TEXT_DOMAIN); ?>
+                            <a href="<?php echo esc_url(get_permalink($preset->ID)); ?>" class="button button-small" target="_blank">
+                                <?php esc_html_e('Preview', 'gutenberg-blocks-presets'); ?>
                             </a>
                         </td>
                     </tr>
@@ -191,7 +191,7 @@ $recent_usage = $wpdb->get_results("
         
         <!-- Usage by Month Chart -->
         <div class="gbp-stats-section gbp-full-width">
-            <h2><?php _e('Usage Trends', GBP_TEXT_DOMAIN); ?></h2>
+            <h2><?php esc_html_e('Usage Trends', 'gutenberg-blocks-presets'); ?></h2>
             
             <?php
             // Get usage by month for the last 12 months
@@ -247,7 +247,7 @@ $recent_usage = $wpdb->get_results("
                 });
                 </script>
             <?php else: ?>
-                <p><?php _e('No usage trend data available yet.', GBP_TEXT_DOMAIN); ?></p>
+                <p><?php esc_html_e('No usage trend data available yet.', 'gutenberg-blocks-presets'); ?></p>
             <?php endif; ?>
         </div>
         

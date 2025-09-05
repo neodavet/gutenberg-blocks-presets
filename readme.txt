@@ -2,7 +2,7 @@
 Contributors: davet86
 Tags: gutenberg, blocks, presets, reusable, native
 Requires at least: 5.9
-Tested up to: 6.6
+Tested up to: 6.8
 Requires PHP: 7.4
 Stable tag: 1.0.0
 Text Domain: gutenberg-blocks-presets

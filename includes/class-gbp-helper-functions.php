@@ -225,7 +225,7 @@ class GBP_Helper_Functions {
         // Allow filtering of final output
         $content = apply_filters('gbp_block_preset_content', $content, $block_id, $block, $args);
 
-        echo $content;
+        echo wp_kses_post($content);
     }
 
     /**

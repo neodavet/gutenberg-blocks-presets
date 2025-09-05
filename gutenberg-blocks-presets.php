@@ -9,9 +9,8 @@
  * Text Domain: gutenberg-blocks-presets
  * Domain Path: /languages
  * Requires at least: 5.9
- * Tested up to: 6.6
+ * Tested up to: 6.8
  * Requires PHP: 7.4
- * Network: false
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  */
@@ -137,27 +136,16 @@ class Gutenberg_Blocks_Presets {
     }
 
     /**
-     * Load plugin textdomain
-     */
-    public function load_textdomain() {
-        load_plugin_textdomain(
-            GBP_TEXT_DOMAIN,
-            false,
-            dirname(GBP_PLUGIN_BASENAME) . '/languages'
-        );
-    }
-
-    /**
      * Add privacy policy content describing data handling
      */
     public function add_privacy_policy_content() {
         if (function_exists('wp_add_privacy_policy_content')) {
-            $content  = '<p>' . esc_html__('Gutenberg Blocks Presets stores minimal data locally to provide its functionality.', GBP_TEXT_DOMAIN) . '</p>';
-            $content .= '<p>' . esc_html__('Specifically, it creates a local database table to track where a block preset is used: block ID, post ID, usage count, and last used date. No personal data is collected by this feature, and no data is transmitted to third parties.', GBP_TEXT_DOMAIN) . '</p>';
-            $content .= '<p>' . esc_html__('If you uninstall the plugin from the Plugins screen, all plugin data (including this usage table, options, and related metadata) will be removed.', GBP_TEXT_DOMAIN) . '</p>';
+            $content  = '<p>' . esc_html__('Gutenberg Blocks Presets stores minimal data locally to provide its functionality.', 'gutenberg-blocks-presets') . '</p>';
+            $content .= '<p>' . esc_html__('Specifically, it creates a local database table to track where a block preset is used: block ID, post ID, usage count, and last used date. No personal data is collected by this feature, and no data is transmitted to third parties.', 'gutenberg-blocks-presets') . '</p>';
+            $content .= '<p>' . esc_html__('If you uninstall the plugin from the Plugins screen, all plugin data (including this usage table, options, and related metadata) will be removed.', 'gutenberg-blocks-presets') . '</p>';
 
             wp_add_privacy_policy_content(
-                __('Gutenberg Blocks Presets', GBP_TEXT_DOMAIN),
+                __('Gutenberg Blocks Presets', 'gutenberg-blocks-presets'),
                 wp_kses_post($content)
             );
         }
@@ -232,8 +220,8 @@ class Gutenberg_Blocks_Presets {
      */
     public function add_admin_menu() {
         add_options_page(
-            __('Gutenberg Blocks Presets Settings', GBP_TEXT_DOMAIN),
-            __('Blocks Presets', GBP_TEXT_DOMAIN),
+            __('Gutenberg Blocks Presets Settings', 'gutenberg-blocks-presets'),
+            __('Blocks Presets', 'gutenberg-blocks-presets'),
             'manage_options',
             'gutenberg-blocks-presets',
             array($this, 'admin_page')
@@ -251,7 +239,52 @@ class Gutenberg_Blocks_Presets {
      * Initialize admin settings
      */
     public function admin_init() {
-        register_setting('gbp_settings_group', 'gbp_settings');
+        register_setting('gbp_settings_group', 'gbp_settings', array(
+            'type' => 'array',
+            'sanitize_callback' => array($this, 'sanitize_gbp_settings'),
+            'default' => array(
+                'enable_acf_blocks' => false,
+                'enable_block_presets' => true,
+                'enable_legacy_post_type' => true,
+                'block_folders' => array(
+                    'general/acf-blocks',
+                    'public/acf-blocks',
+                    'login-register/acf-blocks',
+                    'members/acf-blocks'
+                )
+            )
+        ));
+    }
+
+    /**
+     * Sanitize plugin settings
+     *
+     * @param array $input Raw input data
+     * @return array Sanitized settings
+     */
+    public function sanitize_gbp_settings($input) {
+        $sanitized = array();
+
+        // Sanitize boolean values
+        $sanitized['enable_acf_blocks'] = isset($input['enable_acf_blocks']) ? (bool) $input['enable_acf_blocks'] : false;
+        $sanitized['enable_block_presets'] = isset($input['enable_block_presets']) ? (bool) $input['enable_block_presets'] : true;
+        $sanitized['enable_legacy_post_type'] = isset($input['enable_legacy_post_type']) ? (bool) $input['enable_legacy_post_type'] : true;
+
+        // Sanitize block folders array
+        if (isset($input['block_folders']) && is_array($input['block_folders'])) {
+            $sanitized['block_folders'] = array();
+            foreach ($input['block_folders'] as $folder) {
+                $folder = sanitize_text_field($folder);
+                // Only allow safe folder paths (letters, numbers, hyphens, underscores, forward slashes)
+                if (preg_match('/^[a-zA-Z0-9\-_\/]+$/', $folder)) {
+                    $sanitized['block_folders'][] = $folder;
+                }
+            }
+        } else {
+            $sanitized['block_folders'] = array();
+        }
+
+        return $sanitized;
     }
 
     /**
@@ -261,11 +294,11 @@ class Gutenberg_Blocks_Presets {
         ?>
         <div class="notice notice-success is-dismissible">
             <p>
-                <strong><?php _e('Gutenberg Blocks Presets activated successfully!', GBP_TEXT_DOMAIN); ?></strong>
-                <?php _e('You can now manage your block presets from the', GBP_TEXT_DOMAIN); ?>
-                <a href="<?php echo admin_url('edit.php?post_type=gbp_block_preset'); ?>"><strong><?php _e('Block Presets', GBP_TEXT_DOMAIN); ?></strong></a>
-                <?php _e('menu.', GBP_TEXT_DOMAIN); ?>
-                <a href="<?php echo admin_url('edit.php?post_type=gbp_block_preset&page=gbp-settings'); ?>"><?php _e('Configure settings', GBP_TEXT_DOMAIN); ?></a>
+                <strong><?php esc_html_e('Gutenberg Blocks Presets activated successfully!', 'gutenberg-blocks-presets'); ?></strong>
+                <?php esc_html_e('You can now manage your block presets from the', 'gutenberg-blocks-presets'); ?>
+                <a href="<?php echo esc_url(admin_url('edit.php?post_type=gbp_block_preset')); ?>"><strong><?php esc_html_e('Block Presets', 'gutenberg-blocks-presets'); ?></strong></a>
+                <?php esc_html_e('menu.', 'gutenberg-blocks-presets'); ?>
+                <a href="<?php echo esc_url(admin_url('edit.php?post_type=gbp_block_preset&page=gbp-settings')); ?>"><?php esc_html_e('Configure settings', 'gutenberg-blocks-presets'); ?></a>
             </p>
         </div>
         <?php

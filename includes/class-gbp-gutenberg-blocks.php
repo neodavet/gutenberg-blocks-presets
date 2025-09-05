@@ -92,13 +92,13 @@ class GBP_Gutenberg_Blocks {
         $align      = isset($attributes['align']) ? sanitize_html_class($attributes['align']) : '';
 
         if (!$preset_id) {
-            return $this->render_notice(__('No Block Preset selected.', GBP_TEXT_DOMAIN));
+            return $this->render_notice(__('No Block Preset selected.', 'gutenberg-blocks-presets'));
         }
 
         $post = get_post($preset_id);
         $can_preview = is_admin() || (defined('REST_REQUEST') && REST_REQUEST) || is_preview();
         if (!$post || $post->post_type !== 'gbp_block_preset' || ($post->post_status !== 'publish' && !$can_preview)) {
-            return $this->render_notice(__('This block references a Block Preset that is missing or unavailable. Edits to a Block Preset affect all posts and pages using it.', GBP_TEXT_DOMAIN));
+            return $this->render_notice(__('This block references a Block Preset that is missing or unavailable. Edits to a Block Preset affect all posts and pages using it.', 'gutenberg-blocks-presets'));
         }
 
         // Build wrapper classes

@@ -57,8 +57,8 @@ class GBP_Admin {
         // Settings submenu under Block Presets (main location)
         add_submenu_page(
             'edit.php?post_type=gbp_block_preset',
-            __('Block Presets Settings', GBP_TEXT_DOMAIN),
-            __('Settings', GBP_TEXT_DOMAIN),
+            __('Block Presets Settings', 'gutenberg-blocks-presets'),
+            __('Settings', 'gutenberg-blocks-presets'),
             'manage_options',
             'gbp-settings',
             array($this, 'settings_page')
@@ -67,8 +67,8 @@ class GBP_Admin {
         // Tools submenu under Block Presets
         add_submenu_page(
             'edit.php?post_type=gbp_block_preset',
-            __('Block Presets Tools', GBP_TEXT_DOMAIN),
-            __('Tools', GBP_TEXT_DOMAIN),
+            __('Block Presets Tools', 'gutenberg-blocks-presets'),
+            __('Tools', 'gutenberg-blocks-presets'),
             'manage_options',
             'gbp-tools',
             array($this, 'tools_page')
@@ -77,8 +77,8 @@ class GBP_Admin {
         // Usage Statistics submenu
         add_submenu_page(
             'edit.php?post_type=gbp_block_preset',
-            __('Usage Statistics', GBP_TEXT_DOMAIN),
-            __('Statistics', GBP_TEXT_DOMAIN),
+            __('Usage Statistics', 'gutenberg-blocks-presets'),
+            __('Statistics', 'gutenberg-blocks-presets'),
             'manage_options',
             'gbp-statistics',
             array($this, 'statistics_page')
@@ -86,8 +86,8 @@ class GBP_Admin {
 
         // Also add to Settings menu for discoverability
         add_options_page(
-            __('Gutenberg Blocks Presets Settings', GBP_TEXT_DOMAIN),
-            __('Blocks Presets', GBP_TEXT_DOMAIN),
+            __('Gutenberg Blocks Presets Settings', 'gutenberg-blocks-presets'),
+            __('Blocks Presets', 'gutenberg-blocks-presets'),
             'manage_options',
             'gutenberg-blocks-presets',
             array($this, 'settings_page')
@@ -105,64 +105,64 @@ class GBP_Admin {
         // General Settings Section
         add_settings_section(
             'gbp_general_settings',
-            __('General Settings', GBP_TEXT_DOMAIN),
+            __('General Settings', 'gutenberg-blocks-presets'),
             array($this, 'general_settings_callback'),
             'gutenberg-blocks-presets'
         );
 
         add_settings_field(
             'enable_acf_blocks',
-            __('Enable ACF Blocks (Optional)', GBP_TEXT_DOMAIN),
+            __('Enable ACF Blocks (Optional)', 'gutenberg-blocks-presets'),
             array($this, 'checkbox_field_callback'),
             'gutenberg-blocks-presets',
             'gbp_general_settings',
-            array('field' => 'enable_acf_blocks', 'description' => __('Enable automatic ACF blocks registration from theme folders. Requires Advanced Custom Fields Pro plugin.', GBP_TEXT_DOMAIN))
+            array('field' => 'enable_acf_blocks', 'description' => __('Enable automatic ACF blocks registration from theme folders. Requires Advanced Custom Fields Pro plugin.', 'gutenberg-blocks-presets'))
         );
 
         add_settings_field(
             'enable_block_presets',
-            __('Enable Block Presets', GBP_TEXT_DOMAIN),
+            __('Enable Block Presets', 'gutenberg-blocks-presets'),
             array($this, 'checkbox_field_callback'),
             'gutenberg-blocks-presets',
             'gbp_general_settings',
-            array('field' => 'enable_block_presets', 'description' => __('Enable the Block Presets custom post type.', GBP_TEXT_DOMAIN))
+            array('field' => 'enable_block_presets', 'description' => __('Enable the Block Presets custom post type.', 'gutenberg-blocks-presets'))
         );
 
         add_settings_field(
             'enable_legacy_post_type',
-            __('Enable Legacy Post Type', GBP_TEXT_DOMAIN),
+            __('Enable Legacy Post Type', 'gutenberg-blocks-presets'),
             array($this, 'checkbox_field_callback'),
             'gutenberg-blocks-presets',
             'gbp_general_settings',
-            array('field' => 'enable_legacy_post_type', 'description' => __('Keep the old "block" post type for backward compatibility. Disable this after migration.', GBP_TEXT_DOMAIN))
+            array('field' => 'enable_legacy_post_type', 'description' => __('Keep the old "block" post type for backward compatibility. Disable this after migration.', 'gutenberg-blocks-presets'))
         );
 
         add_settings_field(
             'enable_debug_logging',
-            __('Enable Test Log Mode', GBP_TEXT_DOMAIN),
+            __('Enable Test Log Mode', 'gutenberg-blocks-presets'),
             array($this, 'checkbox_field_callback'),
             'gutenberg-blocks-presets',
             'gbp_general_settings',
-            array('field' => 'enable_debug_logging', 'description' => __('Write diagnostic logs to debug.log for troubleshooting. Disable in production.', GBP_TEXT_DOMAIN))
+            array('field' => 'enable_debug_logging', 'description' => __('Write diagnostic logs to debug.log for troubleshooting. Disable in production.', 'gutenberg-blocks-presets'))
         );
 
         // Block Folders Section
         add_settings_section(
             'gbp_folder_settings',
-            __('Block Folders', GBP_TEXT_DOMAIN),
+            __('Block Folders', 'gutenberg-blocks-presets'),
             array($this, 'folder_settings_callback'),
             'gutenberg-blocks-presets'
         );
 
         add_settings_field(
             'block_folders',
-            __('ACF Block Folders', GBP_TEXT_DOMAIN),
+            __('ACF Block Folders', 'gutenberg-blocks-presets'),
             array($this, 'textarea_field_callback'),
             'gutenberg-blocks-presets',
             'gbp_folder_settings',
             array(
                 'field' => 'block_folders',
-                'description' => __('Enter theme folder paths (relative to theme root) where ACF blocks are located. One per line.', GBP_TEXT_DOMAIN),
+                'description' => __('Enter theme folder paths (relative to theme root) where ACF blocks are located. One per line.', 'gutenberg-blocks-presets'),
                 'placeholder' => "general/acf-blocks\npublic/acf-blocks\nlogin-register/acf-blocks\nmembers/acf-blocks"
             )
         );
@@ -182,11 +182,11 @@ class GBP_Admin {
             wp_enqueue_script('gbp-admin', GBP_PLUGIN_URL . 'admin/js/admin.js', array('jquery'), GBP_VERSION, true);
 
             wp_localize_script('gbp-admin', 'gbp_admin', array(
-                'ajax_url' => admin_url('admin-ajax.php'),
+                'ajax_url' => esc_url(admin_url('admin-ajax.php')),
                 'nonce' => wp_create_nonce('gbp_admin_nonce'),
                 'strings' => array(
-                    'confirm_delete' => __('Are you sure you want to delete this item?', GBP_TEXT_DOMAIN),
-                    'processing' => __('Processing...', GBP_TEXT_DOMAIN)
+                    'confirm_delete' => __('Are you sure you want to delete this item?', 'gutenberg-blocks-presets'),
+                    'processing' => __('Processing...', 'gutenberg-blocks-presets')
                 )
             ));
         }
@@ -198,7 +198,7 @@ class GBP_Admin {
     public function add_meta_boxes() {
         add_meta_box(
             'gbp_block_info',
-            __('Block Information', GBP_TEXT_DOMAIN),
+            __('Block Information', 'gutenberg-blocks-presets'),
             array($this, 'block_info_meta_box'),
             'gbp_block_preset',
             'side',
@@ -207,7 +207,7 @@ class GBP_Admin {
 
         add_meta_box(
             'gbp_block_usage',
-            __('Usage Statistics', GBP_TEXT_DOMAIN),
+            __('Usage Statistics', 'gutenberg-blocks-presets'),
             array($this, 'block_usage_meta_box'),
             'gbp_block_preset',
             'side',
@@ -216,7 +216,7 @@ class GBP_Admin {
 
         add_meta_box(
             'gbp_block_shortcode',
-            __('Shortcode & Functions', GBP_TEXT_DOMAIN),
+            __('Shortcode & Functions', 'gutenberg-blocks-presets'),
             array($this, 'block_shortcode_meta_box'),
             'gbp_block_preset',
             'side',
@@ -235,17 +235,17 @@ class GBP_Admin {
         ?>
         <table class="form-table">
             <tr>
-                <th><label for="gbp_block_type"><?php _e('Block Type', GBP_TEXT_DOMAIN); ?></label></th>
+                <th><label for="gbp_block_type"><?php esc_html_e('Block Type', 'gutenberg-blocks-presets'); ?></label></th>
                 <td>
                     <select name="gbp_block_type" id="gbp_block_type" class="widefat">
-                        <option value="content" <?php selected($block_type, 'content'); ?>><?php _e('Content Block', GBP_TEXT_DOMAIN); ?></option>
-                        <option value="template" <?php selected($block_type, 'template'); ?>><?php _e('Template Block', GBP_TEXT_DOMAIN); ?></option>
-                        <option value="component" <?php selected($block_type, 'component'); ?>><?php _e('Component Block', GBP_TEXT_DOMAIN); ?></option>
+                        <option value="content" <?php selected($block_type, 'content'); ?>><?php esc_html_e('Content Block', 'gutenberg-blocks-presets'); ?></option>
+                        <option value="template" <?php selected($block_type, 'template'); ?>><?php esc_html_e('Template Block', 'gutenberg-blocks-presets'); ?></option>
+                        <option value="component" <?php selected($block_type, 'component'); ?>><?php esc_html_e('Component Block', 'gutenberg-blocks-presets'); ?></option>
                     </select>
                 </td>
             </tr>
             <tr>
-                <th><label for="gbp_block_description"><?php _e('Description', GBP_TEXT_DOMAIN); ?></label></th>
+                <th><label for="gbp_block_description"><?php esc_html_e('Description', 'gutenberg-blocks-presets'); ?></label></th>
                 <td>
                     <textarea name="gbp_block_description" id="gbp_block_description" class="widefat" rows="3"><?php echo esc_textarea($block_description); ?></textarea>
                 </td>
@@ -267,21 +267,22 @@ class GBP_Admin {
         ));
 
         if ($usage_stats) {
-            echo '<h4>' . __('Most Used On:', GBP_TEXT_DOMAIN) . '</h4>';
+            echo '<h4>' . esc_html(__('Most Used On:', 'gutenberg-blocks-presets')) . '</h4>';
             echo '<ul>';
             foreach ($usage_stats as $stat) {
                 $used_post = get_post($stat->post_id);
                 if ($used_post) {
                     echo '<li>';
-                    echo '<a href="' . get_edit_post_link($stat->post_id) . '">' . esc_html($used_post->post_title) . '</a>';
-                    echo ' (' . $stat->usage_count . ' times)';
-                    echo '<br><small>' . sprintf(__('Last used: %s', GBP_TEXT_DOMAIN), date_i18n(get_option('date_format'), strtotime($stat->last_used))) . '</small>';
+                    echo '<a href="' . esc_url(get_edit_post_link($stat->post_id)) . '">' . esc_html($used_post->post_title) . '</a>';
+                    echo ' (' . esc_html($stat->usage_count) . ' times)';
+                    /* translators: %s: Formatted date when the block preset was last used */
+                    echo '<br><small>' . esc_html(sprintf(__('Last used: %s', 'gutenberg-blocks-presets'), date_i18n(get_option('date_format'), strtotime($stat->last_used)))) . '</small>';
                     echo '</li>';
                 }
             }
             echo '</ul>';
         } else {
-            echo '<p>' . __('This block preset has not been used yet.', GBP_TEXT_DOMAIN) . '</p>';
+            echo '<p>' . esc_html(__('This block preset has not been used yet.', 'gutenberg-blocks-presets')) . '</p>';
         }
     }
 
@@ -290,16 +291,16 @@ class GBP_Admin {
      */
     public function block_shortcode_meta_box($post) {
         ?>
-        <h4><?php _e('Shortcode', GBP_TEXT_DOMAIN); ?></h4>
-        <input type="text" readonly value="[gbp_block id=&quot;<?php echo $post->ID; ?>&quot;]" class="widefat" onclick="this.select();">
+        <h4><?php esc_html_e('Shortcode', 'gutenberg-blocks-presets'); ?></h4>
+        <input type="text" readonly value="[gbp_block id=&quot;<?php echo esc_attr($post->ID); ?>&quot;]" class="widefat" onclick="this.select();">
         
-        <h4><?php _e('PHP Function', GBP_TEXT_DOMAIN); ?></h4>
-        <input type="text" readonly value="gbp_render_block_preset(<?php echo $post->ID; ?>);" class="widefat" onclick="this.select();">
+        <h4><?php esc_html_e('PHP Function', 'gutenberg-blocks-presets'); ?></h4>
+        <input type="text" readonly value="gbp_render_block_preset(<?php echo esc_html($post->ID); ?>);" class="widefat" onclick="this.select();">
         
-        <h4><?php _e('Legacy Function', GBP_TEXT_DOMAIN); ?></h4>
-        <input type="text" readonly value="do_cpt_block(<?php echo $post->ID; ?>);" class="widefat" onclick="this.select();">
+        <h4><?php esc_html_e('Legacy Function', 'gutenberg-blocks-presets'); ?></h4>
+        <input type="text" readonly value="do_cpt_block(<?php echo esc_html($post->ID); ?>);" class="widefat" onclick="this.select();">
         
-        <p><small><?php _e('Click on the code to select it for copying.', GBP_TEXT_DOMAIN); ?></small></p>
+        <p><small><?php esc_html_e('Click on the code to select it for copying.', 'gutenberg-blocks-presets'); ?></small></p>
         <?php
     }
 
@@ -336,8 +337,8 @@ class GBP_Admin {
         foreach ($columns as $key => $title) {
             $new_columns[$key] = $title;
             if ($key === 'title') {
-                $new_columns['gbp_usage'] = __('Usage Count', GBP_TEXT_DOMAIN);
-                $new_columns['gbp_shortcode'] = __('Shortcode', GBP_TEXT_DOMAIN);
+                $new_columns['gbp_usage'] = __('Usage Count', 'gutenberg-blocks-presets');
+                $new_columns['gbp_shortcode'] = __('Shortcode', 'gutenberg-blocks-presets');
             }
         }
         return $new_columns;
@@ -355,11 +356,11 @@ class GBP_Admin {
                     "SELECT SUM(usage_count) FROM $table_name WHERE block_id = %d",
                     $post_id
                 ));
-                echo $total_usage ? $total_usage : '0';
+                echo esc_html($total_usage ? $total_usage : '0');
                 break;
                 
             case 'gbp_shortcode':
-                echo '<code>[gbp_block id="' . $post_id . '"]</code>';
+                echo '<code>[gbp_block id="' . esc_attr($post_id) . '"]</code>';
                 break;
         }
     }
@@ -389,14 +390,14 @@ class GBP_Admin {
      * General settings section callback
      */
     public function general_settings_callback() {
-        echo '<p>' . __('Configure general settings for the Gutenberg Blocks Presets plugin. The plugin works with native WordPress functionality - ACF integration is optional.', GBP_TEXT_DOMAIN) . '</p>';
+        echo '<p>' . esc_html(__('Configure general settings for the Gutenberg Blocks Presets plugin. The plugin works with native WordPress functionality - ACF integration is optional.', 'gutenberg-blocks-presets')) . '</p>';
     }
 
     /**
      * Folder settings section callback
      */
     public function folder_settings_callback() {
-        echo '<p>' . __('Configure which theme folders should be scanned for ACF blocks.', GBP_TEXT_DOMAIN) . '</p>';
+        echo '<p>' . esc_html(__('Configure which theme folders should be scanned for ACF blocks.', 'gutenberg-blocks-presets')) . '</p>';
     }
 
     /**
@@ -407,8 +408,8 @@ class GBP_Admin {
         $value = isset($settings[$args['field']]) ? $settings[$args['field']] : false;
         
         echo '<label>';
-        echo '<input type="checkbox" name="gbp_settings[' . $args['field'] . ']" value="1" ' . checked($value, true, false) . '>';
-        echo ' ' . $args['description'];
+        echo '<input type="checkbox" name="gbp_settings[' . esc_attr($args['field']) . ']" value="1" ' . checked($value, true, false) . '>';
+        echo ' ' . esc_html($args['description']);
         echo '</label>';
     }
 
@@ -423,12 +424,12 @@ class GBP_Admin {
             $value = implode("\n", $value);
         }
         
-        echo '<textarea name="gbp_settings[' . $args['field'] . ']" rows="6" class="large-text" placeholder="' . esc_attr($args['placeholder']) . '">';
+        echo '<textarea name="gbp_settings[' . esc_attr($args['field']) . ']" rows="6" class="large-text" placeholder="' . esc_attr($args['placeholder']) . '">';
         echo esc_textarea($value);
         echo '</textarea>';
         
         if (isset($args['description'])) {
-            echo '<p class="description">' . $args['description'] . '</p>';
+            echo '<p class="description">' . esc_html($args['description']) . '</p>';
         }
     }
 

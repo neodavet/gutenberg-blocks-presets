@@ -30,40 +30,40 @@ if (!defined('ABSPATH')) {
         
         <div class="gbp-admin-sidebar">
             <div class="gbp-widget">
-                <h3><?php _e('Plugin Information', GBP_TEXT_DOMAIN); ?></h3>
+                <h3><?php esc_html_e('Plugin Information', 'gutenberg-blocks-presets'); ?></h3>
                 <ul>
-                    <li><strong><?php _e('Version:', GBP_TEXT_DOMAIN); ?></strong> <?php echo GBP_VERSION; ?></li>
-                    <li><strong><?php _e('Post Type:', GBP_TEXT_DOMAIN); ?></strong> gbp_block_preset</li>
-                    <li><strong><?php _e('Shortcode:', GBP_TEXT_DOMAIN); ?></strong> [gbp_block id="123"]</li>
+                    <li><strong><?php esc_html_e('Version:', 'gutenberg-blocks-presets'); ?></strong> <?php echo esc_html(GBP_VERSION); ?></li>
+                    <li><strong><?php esc_html_e('Post Type:', 'gutenberg-blocks-presets'); ?></strong> gbp_block_preset</li>
+                    <li><strong><?php esc_html_e('Shortcode:', 'gutenberg-blocks-presets'); ?></strong> [gbp_block id="123"]</li>
                 </ul>
             </div>
             
             <div class="gbp-widget">
-                <h3><?php _e('Quick Actions', GBP_TEXT_DOMAIN); ?></h3>
+                <h3><?php esc_html_e('Quick Actions', 'gutenberg-blocks-presets'); ?></h3>
                 <p>
-                    <a href="<?php echo admin_url('post-new.php?post_type=gbp_block_preset'); ?>" class="button button-primary">
-                        <?php _e('Create New Block Preset', GBP_TEXT_DOMAIN); ?>
+                    <a href="<?php echo esc_url(admin_url('post-new.php?post_type=gbp_block_preset')); ?>" class="button button-primary">
+                        <?php esc_html_e('Create New Block Preset', 'gutenberg-blocks-presets'); ?>
                     </a>
                 </p>
                 <p>
-                    <a href="<?php echo admin_url('edit.php?post_type=gbp_block_preset'); ?>" class="button">
-                        <?php _e('Manage Block Presets', GBP_TEXT_DOMAIN); ?>
+                    <a href="<?php echo esc_url(admin_url('edit.php?post_type=gbp_block_preset')); ?>" class="button">
+                        <?php esc_html_e('Manage Block Presets', 'gutenberg-blocks-presets'); ?>
                     </a>
                 </p>
                 <p>
-                    <a href="<?php echo admin_url('edit.php?post_type=gbp_block_preset&page=gbp-statistics'); ?>" class="button">
-                        <?php _e('View Statistics', GBP_TEXT_DOMAIN); ?>
+                    <a href="<?php echo esc_url(admin_url('edit.php?post_type=gbp_block_preset&page=gbp-statistics')); ?>" class="button">
+                        <?php esc_html_e('View Statistics', 'gutenberg-blocks-presets'); ?>
                     </a>
                 </p>
             </div>
             
             <div class="gbp-widget">
-                <h3><?php _e('Documentation', GBP_TEXT_DOMAIN); ?></h3>
-                <p><?php _e('Use these functions in your theme:', GBP_TEXT_DOMAIN); ?></p>
+                <h3><?php esc_html_e('Documentation', 'gutenberg-blocks-presets'); ?></h3>
+                <p><?php esc_html_e('Use these functions in your theme:', 'gutenberg-blocks-presets'); ?></p>
                 <code>gbp_render_block_preset(123);</code><br>
                 <code>do_cpt_block(123); // Legacy</code><br><br>
                 
-                <p><?php _e('Use shortcodes in content:', GBP_TEXT_DOMAIN); ?></p>
+                <p><?php esc_html_e('Use shortcodes in content:', 'gutenberg-blocks-presets'); ?></p>
                 <code>[gbp_block id="123"]</code><br>
                 <code>[block_preset id="123"]</code>
             </div>
